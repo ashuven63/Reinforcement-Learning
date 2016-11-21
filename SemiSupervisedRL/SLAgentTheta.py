@@ -79,8 +79,8 @@ def get_velocity_tile(i):
 
 def get_discrete_state(S):
     # (x_coor, y_coor) = get_position_tile(S[0], S[1])
-    theta = get_bin(cart2pol(S[0], S[1]), 0, ANGLE_TILE_SIZE)
-    thetadot = get_velocity_tile(S[2])
+    theta = get_bin(S[0], 180, ANGLE_TILE_SIZE)
+    thetadot = get_velocity_tile(S[1])
     return (theta, thetadot)
 
 def cart2pol(x, y):
