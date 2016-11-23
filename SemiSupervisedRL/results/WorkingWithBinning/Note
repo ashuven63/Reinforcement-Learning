@@ -1,0 +1,15 @@
+Note
+
+ALPHA = 0.1
+GAMMA = 0.9
+NO_OF_EPISODES = 1000
+NO_OF_ITER = 500
+ANGLE_TILE_SIZE = 18 # Should be such that no bin lies on both sides of center
+THETADOT_TILE_SIZE = 6
+env = gym.make('Pendulum-v0')
+# ACTIONS = [-2, -1.6, -0.8, -0.4, -0.2, 0, 0.2, 0.4, 0.8, 1.6, 2]
+ACTIONS = [-1.5, -0.1, 0, 0.1, 1.5 ]
+VELOCITY = [x for x in range(-8, 9)]
+MAX_LENGTH_MEMORY = 10000
+REPLAY_SAMPLE_SIZE = 50
+ENABLE_REPLAY = False
