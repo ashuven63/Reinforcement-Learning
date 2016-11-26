@@ -13,17 +13,19 @@ and should still perform as well as possible.
 import gym
 
 class SemisuperEnv(gym.Env):
+    last_seen_reward = 0
     def step(self, action):
-        assert self.action_space.contains(action)
         self.monitor._before_step(action)
 
         observation, true_reward, done, info = self._step(action)
-        assert self.observation_space.contains(observation)
+        # assert self.observation_space.contains(observation)
 
         done = self.monitor._after_step(observation, true_reward, done, info)
-
+        SemisuperEnv.last_seen_reward = true_reward
         perceived_reward = self._distort_reward(true_reward)
         return observation, perceived_reward, done, info
+    def get_true_rewards(self):
+        return SemisuperEnv.last_seen_reward
 
 """
 true_reward is only shown to the agent 1/10th of the time.
@@ -64,6 +66,7 @@ class SemisuperDecayEnv(SemisuperEnv):
 
         # Then we compute the perceived_reward
         if self.np_random.uniform() < self.prob_get_reward:
+            print 'True Reward Returned'
             return true_reward
         else:
             return 0
