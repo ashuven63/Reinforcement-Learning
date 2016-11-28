@@ -66,7 +66,7 @@ class SemisuperDecayEnv(SemisuperEnv):
 
         # Then we compute the perceived_reward
         if self.np_random.uniform() < self.prob_get_reward:
-            print 'True Reward Returned'
+            # print 'True Reward Returned'
             return true_reward
         else:
             return 0

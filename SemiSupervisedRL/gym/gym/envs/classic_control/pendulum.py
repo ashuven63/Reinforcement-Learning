@@ -18,11 +18,11 @@ class PendulumEnv(gym.Env):
 
         high = np.array([1., 1., self.max_speed])
         self.action_space = spaces.Box(low=-self.max_torque, high=self.max_torque, shape=(1,))
-        print 'Action Space'
-        print self.action_space
+        # print 'Action Space'
+        # print self.action_space
         self.observation_space = spaces.Box(low=-high, high=high)
-        print 'Observation Space'
-        print self.observation_space
+        # print 'Observation Space'
+        # print self.observation_space
         self._seed()
 
     def _seed(self, seed=None):
